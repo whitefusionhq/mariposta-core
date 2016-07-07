@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mariposta_core (4.0.0)
+    mariposta-core (4.0.0)
       rails (>= 5.0, < 6.0)
       safe_yaml (~> 1.0)
 
@@ -132,7 +132,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  mariposta_core!
+  mariposta-core!
   rspec-rails (= 3.5)
 
 BUNDLED WITH
