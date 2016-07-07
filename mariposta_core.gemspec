@@ -5,7 +5,7 @@ require "mariposta_core/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "mariposta_core"
+  s.name        = "mariposta-core"
   s.version     = MaripostaCore::VERSION
   s.authors     = ["Jared White"]
   s.email       = ["jared@jaredwhite.com"]
