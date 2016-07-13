@@ -7,7 +7,7 @@ require "action_mailer/railtie"
 require 'rails/test_unit/railtie'
 
 #Bundler.require(*Rails.groups)
-require "mariposta_core"
+require "mariposta-core"
 
 module Dummy
   class Application < Rails::Application

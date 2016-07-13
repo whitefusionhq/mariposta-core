@@ -1,0 +1,54 @@
+---
+gems:
+- jekyll-paginate
+exclude:
+- "/vendor/"
+- vendor
+title: INTERSECT
+subtitle: Celebrate the User Experience (UX) of your business and master the intersections
+  between growth, design, and engineering for greater success.
+email: hello@whitefusion.io
+name: Jared White
+description: |
+  Celebrate the UX of your business and master the intersections between growth, design, and engineering for greater success. Brought to you by the fine folks at <a href="http://ux.whitefusion.io">WHITEFUSION*UX</a>
+baseurl: ''
+url: http://intersect.whitefusion.io
+cover: "/assets/header_image2.jpg"
+logo: "/assets/intersect-hash.png"
+permalink: "/:categories/:title"
+markdown: kramdown
+paginate: 5
+paginate_path: "/page:num/"
+inter_post_navigation: false
+highlightjs_theme: monokai_sublime
+ga_tracking_id: UA-28477462-5
+descriptions:
+- cat: jekyll
+  desc: Posts describing Jekyll setup techniques.
+- cat: dummy
+  desc: Just some placeholder posts, lorem ipsum and the rest.
+social:
+- name: Twitter
+  icon: twitter
+  username: _whitefusion
+  url: https://twitter.com/_whitefusion
+  desc: Follow us on Twitter
+  share: true
+- name: Facebook
+  icon: facebook
+  username: whitefusionfoundry
+  url: https://facebook.com/whitefusionfoundry
+  desc: Follow us on Facebook
+  share: true
+- name: Reddit
+  icon: reddit
+  username: 
+  url: 
+  desc: Share to Reddit
+  share: true
+protocols:
+  fb_image: "/assets/logo.png"
+  fb_image_width: 612
+  fb_image_height: 605
+  fb_image_type: image/png
+  twitter_image: "/assets/logo.png"

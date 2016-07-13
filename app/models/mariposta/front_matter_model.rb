@@ -12,6 +12,10 @@ class Mariposta::FrontMatterModel
       end
     end
   end
+  def update_variables(hash)
+    self.attributes = hash
+  end
+  
   def attributes
     ret = {}
     self.class.variable_names.each do |var_name|

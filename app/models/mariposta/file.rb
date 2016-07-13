@@ -10,6 +10,7 @@ class Mariposta::File
 
   def self.read(file_path, using_fmm:)
     obj = new(using_fmm: using_fmm)
+    obj.path = file_path
     file_data = File.read(file_path)
     loaded_attributes = {}
 
