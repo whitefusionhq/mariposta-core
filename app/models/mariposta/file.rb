@@ -47,5 +47,9 @@ class Mariposta::File
     File.open(use_path, 'w') do |f|
       f.write(generate_output)
     end
+
+    Mariposta::Repository.current.add(use_path)
+
+    true
   end
 end
