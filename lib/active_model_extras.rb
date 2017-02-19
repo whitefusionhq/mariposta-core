@@ -26,6 +26,13 @@ module ActiveModel
         as_hash = options.delete(:as_hash)
         hash = serializable_hash(options)
 
+        # we don't like DateTime in YML. Needs to be just Time.
+        hash.each do |k,v|
+          if v.is_a?(DateTime)
+            hash[k] = v.to_time
+          end
+        end
+
         if include_root_in_json
           custom_root = options && options[:root]
           hash = { custom_root || self.class.model_name.element => hash }
