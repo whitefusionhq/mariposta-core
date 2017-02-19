@@ -17,15 +17,19 @@ class Mariposta::Repository
   end
 
   def changes?
-    changed_files = @git.status.changed
+    @git.lib.diff_index('HEAD').values.present?
+
+# THIS CODE IS TOO SLOW! keeping for future reference
+#
+#    changed_files = @git.status.changed
 
     # don't include small changes to _site only, such as feed.xml, etc.
-    changed = changed_files.length - changed_files.keys.select{|item| item.include?('_site/')}.length
+#    changed = changed_files.length - changed_files.keys.select{|item| item.include?('_site/')}.length
 
-    added = @git.status.added.length
-    deleted = @git.status.deleted.length
+#    added = @git.status.added.length
+#    deleted = @git.status.deleted.length
 
-    (changed + added + deleted) > 0
+#    (changed + added + deleted) > 0
   end
 
   def add(filepath)
