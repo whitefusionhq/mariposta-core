@@ -17,7 +17,12 @@ class Mariposta::Repository
   end
 
   def changes?
-    @git.lib.diff_index('HEAD').values.present?
+    git_diff = @git.lib.diff_index('HEAD').values
+    if git_diff.present?
+      return true unless git_diff.length == 1 && git_diff.first[:path] == "Procfile"
+    end
+
+    false
 
 # THIS CODE IS TOO SLOW! keeping for future reference
 #
