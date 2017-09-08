@@ -28,7 +28,10 @@ module ActiveModel
 
         # we don't like DateTime in YML. Needs to be just Time.
         hash.each do |k,v|
-          if v.is_a?(DateTime)
+          if v.nil?
+            # we don't want to save nil values as empty front matter variables
+            hash.delete(k)
+          elsif v.is_a?(DateTime)
             hash[k] = v.to_time
           end
         end
