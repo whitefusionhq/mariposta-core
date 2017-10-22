@@ -12,5 +12,5 @@ We're already using Mariposta 4 in production and will be rolling out several si
 
 In the meantime, feel free to poke around and let us know if you have any comments or ideas!
 
--Jared White
+-Jared White  
 [Whitefusion](http://whitefusion.io)
