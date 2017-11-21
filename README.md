@@ -2,7 +2,7 @@
 
 _WORK IN PROGRESS_
 
-Mariposta started out life as a proprietary CMS primarly intended for creating app-like websites specially formatted for the iPad. This was before responsive design techniques and  "minimalist" design (flat UI, etc.) became the norm. So Mariposta didn't really catch on in that incarnation.
+Mariposta started out life as a proprietary CMS primarily intended for creating app-like websites specially formatted for the iPad. This was before responsive design techniques and  "minimalist" design (flat UI, etc.) became the norm. So Mariposta didn't really catch on in that incarnation.
 
 But since building and using specialized CMSes is in our DNA at [Whitefusion](http://whitefusion.io), we ended up pursuing a very different path and are now in the business of designing custom admin portals (aka the editing side of a CMS) for our clients and using Rails + Jekyll under the hood. Jekyll is an absolutely fantastic static site generator, but something else needs to be integrated with it in order to allow normal/non-technical users to create and edit their website content.
 

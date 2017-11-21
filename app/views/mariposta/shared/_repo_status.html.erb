@@ -1,0 +1,16 @@
+<%
+  @status = Mariposta::Repository.current.git.status
+%>
+
+  <h3>New Files</h3>
+<% @status.added.each do |file| %>
+  <div><%= file[1].path.sub("_jekyll", '')[1..999] %></div>
+<% end %>
+
+  <br/>
+
+  <h3>Modified Files</h3>
+<% @status.changed.each do |file| %>
+  <% next if file[1].path.include?("Procfile") %>
+  <div><%= file[1].path.sub("_jekyll", '')[1..999] %></div>
+<% end %>
