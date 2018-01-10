@@ -31,7 +31,7 @@ class Mariposta::File
   end
 
   def initialize(using_fmm:)
-    self.front_matter = using_fmm.new
+    self.front_matter = using_fmm.new(self)
   end
 
   def generate_output

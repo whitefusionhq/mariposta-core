@@ -3,6 +3,12 @@ class Mariposta::FrontMatterModel
   include ActiveModel::Serializers::YAML
   extend ActiveModel::VariableDefinitions
 
+  attr_accessor :file_object
+
+  def initialize(file)
+    self.file_object = file
+  end
+
   def attributes=(hash)
     hash.each do |key, value|
       begin
