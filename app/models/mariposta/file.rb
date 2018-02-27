@@ -1,5 +1,6 @@
 require 'safe_yaml'
 
+puts "** Mariposta::File is DEPRICATED and will be removed in 4.2"
 class Mariposta::File
   # thank you Jekyll!
   YAML_FRONT_MATTER_REGEXP = %r!\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)!m

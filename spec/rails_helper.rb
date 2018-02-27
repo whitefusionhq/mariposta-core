@@ -46,7 +46,3 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 end
-
-class Mariposta::AmTest < Mariposta::FrontMatterModel
-  variables :first_name, :last_name, :tags
-end

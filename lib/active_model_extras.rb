@@ -1,7 +1,8 @@
 # require 'active_support/core_ext/class/attribute'
 require 'active_model'
 
-module ActiveModel
+module Mariposta
+
   # == Active Model YAML Serializer
   module Serializers
     module YAML
@@ -47,16 +48,13 @@ module ActiveModel
       def from_yaml(yaml)
         hash = SafeYAML.load(yaml)
         hash = hash.values.first if include_root_in_json
-        self.attributes = hash
+        self.assign_attributes(hash)
         self
       end
     end
   end
-end
 
-module ActiveModel
   module VariableDefinitions
-
     def variables(*names_arr)
       @variable_names = names_arr
       names_arr.each do |var_name|
@@ -67,6 +65,5 @@ module ActiveModel
     def variable_names
       @variable_names
     end
-
   end
 end

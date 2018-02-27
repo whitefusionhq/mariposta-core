@@ -1,7 +1,8 @@
+puts "** Mariposta::FrontMatterModel is DEPRICATED and will be removed in 4.2"
 class Mariposta::FrontMatterModel
   include ActiveModel::Model
-  include ActiveModel::Serializers::YAML
-  extend ActiveModel::VariableDefinitions
+  include Mariposta::Serializers::YAML
+  extend Mariposta::VariableDefinitions
 
   attr_accessor :file_object
 

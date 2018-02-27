@@ -1,3 +1,3 @@
-class PostTest < Mariposta::FrontMatterModel
+class PostModelTest < Mariposta::ContentModel
   variables :title, :author, :tags, :draft
 end
