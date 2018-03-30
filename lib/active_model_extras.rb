@@ -66,4 +66,13 @@ module Mariposta
       @variable_names
     end
   end
+
+  module FilePathDefinitions
+    def folder(path)
+      @folder_path = path
+    end
+    def folder_path
+      @folder_path
+    end
+  end
 end

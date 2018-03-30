@@ -4,16 +4,55 @@ class Mariposta::ContentModel
   include ActiveModel::Model
   include Mariposta::Serializers::YAML
   extend Mariposta::VariableDefinitions
+  extend Mariposta::FilePathDefinitions
+
+  cattr_accessor :base_path
+  self.base_path = ENV['site_base_path']
 
   attr_accessor :file_path, :content
 
   # code snippet from Jekyll
   YAML_FRONT_MATTER_REGEXP = %r!\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)!m
+  CHECK_BASE_64_REGEXP = /^([A-Za-z0-9+\/]{4})*([A-Za-z0-9+\/]{4}|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{2}==)$/
 
   def self.find(file_path)
+    # decode Base64 path if necessary
+    if CHECK_BASE_64_REGEXP.match file_path
+      file_path = Base64::decode64 file_path
+    end
+
+    file_path = path(file_path)
+
     new(file_path: file_path).tap do |content_model|
       content_model.load_file_from_path
     end
+  end
+  def self.path(path)
+    sanitize_filepath File.join(Mariposta::ContentModel.base_path, folder_path, path)
+  end
+  def self.sanitize_filepath(path)
+    if path.include? "../"
+      # TODO: output better error message ;)
+      raise "Nice try, Hacker Dude. You lose."
+    end
+
+    path
+  end
+
+  def self.all(sorted: true)
+    # find all files in the folder and any direct subfolders
+    glob_pattern = File.join(Mariposta::ContentModel.base_path, folder_path, "**/**")
+
+    files = Dir.glob(glob_pattern)
+    models = files.map do |file_path|
+      unless File.directory? file_path
+        new(file_path: file_path).tap do |content_model|
+          content_model.load_file_from_path
+        end
+      end
+    end.compact
+
+    models.sort_by! {|content_model| content_model.file_stat.mtime }.reverse if sorted
   end
 
   def save(force_file_path=nil)
@@ -37,6 +76,12 @@ class Mariposta::ContentModel
 
   def file_name
     file_path&.split('/')&.last
+  end
+
+  def file_stat
+    if persisted?
+      @file_stat ||= File.stat(file_path)
+    end
   end
 
   def generate_file_output

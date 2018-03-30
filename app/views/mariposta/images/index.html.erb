@@ -1,0 +1,23 @@
+<h1 class="text-center">Image Library</h1>
+
+<% if @modal %>
+  <div class="text-center">
+    <div id="upload_widget_opener"></div>
+  </div>
+<% end %>
+
+<div class="grid-x grid-padding-x small-up-2 medium-up-3 large-up-4 image-library<% if @modal %> modal-context<% end %>">
+  <% @images.each do |image| %>
+    <div class="cell text-center">
+      <div class="thumbnail" data-cloudinary-id="<%= image[:id] %>"><%= cl_image_tag image[:path], :width => 150, :height => 150,
+         :crop => :thumb, :format => :jpg, :quality => 60 %></div>
+      <div class="image-name"><%= image[:id] %>.<%= image[:format] %></div>
+    </div>
+  <% end %>
+</div>
+
+<% if @modal %>
+  <button class="close-button" data-close aria-label="Close reveal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+<% end %>
