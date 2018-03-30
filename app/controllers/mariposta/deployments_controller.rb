@@ -8,7 +8,9 @@ class Mariposta::DeploymentsController < ApplicationController
   def create
     # process the webhook!
 
-    Rails.logger.info "** INCOMING: #{params.inspect}"
+    deployment = Mariposta::Deployment.new(params)
+    Rails.cache.write(:deployment_status, deployment.display_status)
+    Rails.cache.write(:deployment_status_updated, Time.now)
 
     render json: {status: 'ok'}
   end
