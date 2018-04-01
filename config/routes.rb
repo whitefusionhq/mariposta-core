@@ -6,5 +6,9 @@ MaripostaCore::Engine.routes.draw do
     post '/publish/now'
 
     get 'images' => 'images#index'
+
+    get '/awesome/token'
+    get '/awesome' => 'awesome#show'
+    post '/awesome' => 'awesome#create'
   end
 end
