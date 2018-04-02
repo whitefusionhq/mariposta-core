@@ -39,9 +39,9 @@ class Mariposta::ContentModel
     path
   end
 
-  def self.all(sorted: true)
+  def self.all(sorted: true, subfolder: nil)
     # find all files in the folder and any direct subfolders
-    glob_pattern = File.join(Mariposta::ContentModel.base_path, folder_path, "**/**")
+    glob_pattern = File.join(Mariposta::ContentModel.base_path, folder_path, subfolder.to_s, "**/**")
 
     files = Dir.glob(glob_pattern)
     models = files.map do |file_path|
