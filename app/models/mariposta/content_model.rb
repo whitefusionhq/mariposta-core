@@ -27,9 +27,11 @@ class Mariposta::ContentModel
       content_model.load_file_from_path
     end
   end
+
   def self.path(path)
-    sanitize_filepath File.join(Mariposta::ContentModel.base_path, folder_path, path)
+    sanitize_filepath File.join(self.base_path, self.folder_path, path)
   end
+
   def self.sanitize_filepath(path)
     if path.include? "../"
       # TODO: output better error message ;)
@@ -41,7 +43,7 @@ class Mariposta::ContentModel
 
   def self.all(sorted: true, subfolder: nil)
     # find all files in the folder and any direct subfolders
-    glob_pattern = File.join(Mariposta::ContentModel.base_path, folder_path, subfolder.to_s, "**/**")
+    glob_pattern = File.join(self.base_path, self.folder_path, subfolder.to_s, "**/**")
 
     files = Dir.glob(glob_pattern)
     models = files.map do |file_path|
@@ -70,6 +72,14 @@ class Mariposta::ContentModel
     true
   end
 
+  def id
+    if persisted?
+      relative_base = File.join(self.class.base_path, self.class.folder_path)
+      relative_path = file_path.sub(/^#{relative_base}/, '')
+      Base64.encode64(relative_path).strip
+    end
+  end
+
   def persisted?
     file_path.present?
   end
@@ -81,6 +91,14 @@ class Mariposta::ContentModel
   def file_stat
     if persisted?
       @file_stat ||= File.stat(file_path)
+    end
+  end
+
+  def posted_datetime
+    if date
+      date.to_datetime
+    elsif matched = file_name.to_s.match(/^[0-9]+-[0-9]+-[0-9]+/)
+      matched[0].to_datetime
     end
   end
 
