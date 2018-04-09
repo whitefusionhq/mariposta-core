@@ -19,7 +19,7 @@ class Mariposta::Repository
   def changes?
     git_diff = @git.lib.diff_index('HEAD').values
     if git_diff.present?
-      return true unless git_diff.length == 1 && git_diff.first[:path] == "Procfile"
+      return true unless git_diff.length == 1 && git_diff.first[:path].to_s.include?("Procfile")
     end
 
     false
@@ -43,6 +43,12 @@ class Mariposta::Repository
 
   def pull
     @git.pull
+  end
+
+  def needs_pull?
+    @git.fetch
+    gitstatus = `cd "#{@repo_dir}";git status`
+    gitstatus.include? "branch is behind"
   end
 
   def commit(message:)
