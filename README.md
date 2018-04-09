@@ -10,7 +10,7 @@ Mariposta 4, when "complete" (like any software is ever complete!), will be a Ra
 
 We're already using Mariposta 4 in production and will be rolling out several sites in the coming year. Once we feel like this codebase is ready for the wider world, we'll announce it and engage with the open source community in an intentional fashion.
 
-In the meantime, feel free to poke around and let us know if you have any comments or ideas!
+In the meantime, feel free to poke around—and let us know if you have any comments or ideas!
 
 -Jared White  
 [Whitefusion](http://whitefusion.io)
