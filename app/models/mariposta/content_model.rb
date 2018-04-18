@@ -54,7 +54,11 @@ class Mariposta::ContentModel
       end
     end.compact
 
-    models.sort_by! {|content_model| content_model.file_stat.mtime }.reverse if sorted
+    if sorted
+      models.sort_by! {|content_model| content_model.file_stat.mtime }.reverse
+    else
+      models
+    end
   end
 
   def save(force_file_path=nil)

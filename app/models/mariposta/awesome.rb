@@ -22,4 +22,6 @@ class Mariposta::Awesome
   def digest_url
     Digest::MD5.hexdigest(url)
   end
+
+  # TODO: return awesome keys: r.scan(0, match: "cache:awesome/*")
 end
