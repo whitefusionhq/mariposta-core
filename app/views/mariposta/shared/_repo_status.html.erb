@@ -14,3 +14,11 @@
   <% next if file[1].path.include?("Procfile") %>
   <div><%= file[1].path.sub("_jekyll", '')[1..999] %></div>
 <% end %>
+
+  <br/>
+  
+  <h3>Deleted Files</h3>
+<% @status.deleted.each do |file| %>
+  <% next if file[1].path.include?("Procfile") %>
+  <div><%= file[1].path.sub("_jekyll", '')[1..999] %></div>
+<% end %>

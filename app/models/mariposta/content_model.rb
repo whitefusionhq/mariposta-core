@@ -76,6 +76,16 @@ class Mariposta::ContentModel
     true
   end
 
+  def destroy
+    if persisted?
+      File.delete(file_path)
+      Mariposta::Repository.current&.remove(file_path)
+      self.file_path = nil
+
+      true
+    end
+  end
+
   def id
     if persisted?
       relative_base = File.join(self.class.base_path, self.class.folder_path)

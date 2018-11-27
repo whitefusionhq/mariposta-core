@@ -41,6 +41,10 @@ class Mariposta::Repository
     @git.add(filepath)
   end
 
+  def remove(filepath)
+    @git.remove(filepath)
+  end
+
   def pull
     @git.pull
   end
