@@ -50,7 +50,7 @@ class Mariposta::Repository
   end
 
   def needs_pull?
-    @git.fetch
+    @git.fetch(ENV['git_publish_remote'] || 'origin')
     gitstatus = `cd "#{@repo_dir}";git status`
     gitstatus.include? "branch is behind"
   end
