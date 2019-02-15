@@ -11,7 +11,8 @@ module Mariposta
         end
 
         if current_user.last_activity_at < 10.minutes.ago && Mariposta::Repository.current.needs_pull?
-          Mariposta::Repository.current.pull
+          git_remote = ENV['git_publish_remote'] || 'origin'
+          Mariposta::Repository.current.pull(remote: git_remote)
         end
       end
     end

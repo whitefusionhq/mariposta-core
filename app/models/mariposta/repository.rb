@@ -45,8 +45,12 @@ class Mariposta::Repository
     @git.remove(filepath)
   end
 
-  def pull
-    @git.pull
+  def pull(remote: nil)
+    if remote
+      @git.pull @git.remote(remote)
+    else
+      @git.pull
+    end
   end
 
   def needs_pull?
