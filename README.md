@@ -1,6 +1,8 @@
 # Mariposta 4
 
-_WORK IN PROGRESS_
+_UPDATE:_ this project has been depricated in favor of our upcoming release of **Yarii**. The goal is the same: a "drop-in" Rails engine that will allow you to create and edit static content. Stay tuned!
+
+----
 
 Mariposta started out life as a proprietary CMS primarily intended for creating app-like websites specially formatted for the iPad. This was before responsive design techniques and  "minimalist" design (flat UI, etc.) became the norm. So Mariposta didn't really catch on in that incarnation.
 
